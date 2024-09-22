@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication</title>
+</head>
+<body>
+    <h1>Authentication</h1>
+    <a href="{% url "home" %}">Home</a>
+    {% if user.is_authenticated %}
+
+      <a href="{% url 'password_change' %}">Change Password</a>
+      <a href="{% url "logout" %}">log out</a> <br>
+      <strong>You are logged in as {{user.username}}</strong>
+    {% else %}
+      <a href="{% url "signup" %}">singup</a>
+      <a href="{% url "login" %}">Login</a>
+    {% endif %}
+    
+
+
+    <hr>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
